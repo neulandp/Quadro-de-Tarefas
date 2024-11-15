@@ -1,0 +1,118 @@
+body {
+    display: flex; /*Layout flexível*/
+    justify-content: center; /*Centraliza horizontalmente*/
+    align-items: center; /*Centraliza verticalmente*/
+    height: 100vh; /*Ocupa 100% da altura da tela*/
+    margin: 0; /*Remove a margem*/
+    background: linear-gradient(135deg, /*Cor do fundo com gradiente arco-íris*/
+        #FF0000,
+        #FF7F00,
+        #FFFF00,
+        #00FF00,
+        #0000FF,
+        #4B0082,
+        #8B00FF
+    );
+    background-size: 400% 400%; /*Tamanho do gradiente*/
+    animation: rainbow 10s ease infinite; /*Animação do gradiente*/
+}
+
+@keyframes rainbow { /*Animação para movimentar o gradiente*/
+    0% { /*Início da animação*/
+        background-position: 0% 50%;
+    }
+    50% { /*Meio da animação*/
+        background-position: 100% 50%;
+    }
+    100% { /*Fim da animação*/
+        background-position: 0% 50%;
+    }
+}
+
+.blocoPrincipal {
+    display: flex; /*Layout flexível */
+    flex-direction: column; /*Organiza os itens em uma coluna*/
+    margin: 10% auto; /*Centraliza o bloco na tela, com margens ajustáveis*/
+    justify-content: center; /*Centraliza horizontalmente*/
+    align-items: center; /*Centraliza verticalmente*/
+    width: 300px; /*Largura fixa do quadrado*/
+    height: 300px; /*Altura fixa do quadrado, igual à largura*/
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com transparência*/
+    border-radius: 10px; /*Bordas arredondadas*/
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /*Sombra suave*/
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+form {  
+    display: flex; /*Layout flexível*/
+    flex-direction: column; /*Coloca os elementos em coluna*/
+    align-items: center; /*Centraliza o elemento*/
+}  
+
+.textoEmail {
+    font-family: 'Arial', sans-serif; /*Fonte do texto*/
+    font-weight: bold; /*Negrito*/
+    font-size: 16px; /*Tamanho da fonte*/
+    margin-bottom: 12px; /*Aumentado para dar mais espaço entre o texto e o input*/
+    color: black; /*Cor do texto*/
+    text-align: left; /*Alinhamento à esquerda para maior clareza*/
+    letter-spacing: 0.5px; /*Pequeno aumento no espaçamento das letras*/
+    line-height: 1.5; /*Maior altura de linha*/
+    transition: color 0.3s ease; /*Transição suave para mudanças na cor*/
+}
+
+input {
+    border: 2px solid grey; /*Borda de cor cinza*/
+    border-radius: 5px; /*Borda arredondada*/
+    width: 100%; /*Preenche toda a largura disponível*/
+    max-width: 300px; /*Largura máxima*/
+    padding: 12px 15px; /*Maior espaçamento interno*/
+    font-size: 16px; /*Tamanho da fonte*/
+    margin-bottom: 12px; /*Espaçamento abaixo do input*/
+    background-color: #f9f9f9; /*Cor de fundo*/
+    color: #333; /*Cor do texto*/
+    transition: all 0.3s ease; /*Transições suaves*/
+}
+
+input:focus { /*Efeito de foco no campo de input*/
+    border-color: #000000; /*Cor da borda quando o campo está focado*/
+    background-color: #fff; /*Fundo branco ao focar*/
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /*Sombra suave para indicar foco*/
+    outline: none; /*Remove o contorno padrão do navegador*/
+}
+
+input:hover { /*Efeito de hover para o input*/
+    border-color: #000000; /*Muda a cor da borda ao passar o mouse*/
+    background-color: #f0f0f0; /*Muda o fundo para um tom mais claro ao passar o mouse*/
+}
+
+.botaoPrincipal {
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /*Fonte do botão*/
+    font-weight: bold; /*Negrito*/
+    background-color: #A8EBAF; /*Cor de fundo*/
+    color: black; /*Cor do texto*/
+    border: 2px solid #72bc79; /*Borda de cor mais escura para contraste*/
+    border-radius: 5px; /*Borda arredondada*/
+    padding: 12px 20px; /*Aumenta o padding para tornar o botão maior*/
+    cursor: pointer; /*Altera o cursor do mouse quando passa em cima do elemento*/
+    font-size: 16px; /*Tamanho da fonte*/
+    text-align: center; /*Centraliza o texto*/
+    transition: all 0.3s ease; /*Transição suave para todos os efeitos*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*Sombra suave para dar a impressão de um botão elevado*/
+}
+
+.botaoPrincipal:hover {
+    background-color: #72bc79; /*Cor de fundo altera ao passar o mouse*/
+    border-color: #62a96a; /*Ajusta a cor da borda ao passar o mouse*/
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /*Aumenta a sombra ao passar o mouse*/
+}
+
+.botaoPrincipal:active { /*Quando o botão é pressionado*/
+    transform: scale(0.98); /*Reduz o tamanho do botão ao clicar*/
+    background-color: #A0D89B; /*Cor de fundo durante o clique*/
+    border-color: #8abf7b; /*Ajusta a cor da borda durante o clique*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*Reduz a sombra ao clicar*/
+}
