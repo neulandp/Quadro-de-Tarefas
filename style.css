@@ -40,10 +40,10 @@ body {
     background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com transparência*/
     border-radius: 10px; /*Bordas arredondadas*/
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /*Sombra suave*/
-    padding-top: 10px; 
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 10px; /*Espaçamento no topo do elemento*/
+    padding-bottom: 10px; /*Espaçamento na parte inferior do elemento*/
+    padding-left: 20px; /*Espaçamento no lado esquerdo do elemento*/
+    padding-right: 20px; /*Espaçamento no lado direito do elemento*/
 }
 
 form {  
