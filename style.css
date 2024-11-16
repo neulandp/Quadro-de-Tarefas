@@ -14,7 +14,7 @@ body {
         #8B00FF
     );
     background-size: 400% 400%; /*Tamanho do gradiente*/
-    animation: rainbow 10s ease infinite; /*Animação do gradiente*/
+    animation: rainbow 20s ease infinite; /*Animação do gradiente*/
 }
 
 @keyframes rainbow { /*Animação para movimentar o gradiente*/
