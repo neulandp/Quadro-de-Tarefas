@@ -3,33 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css"> <!--Arquivo do CSS-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous"> <!--Arquivo para ícones-->
-    <link rel="icon" type="png" href="./LogoTipoSystem.png"> <!--Ícone do navegador-->
-    <title>Quase Trello</title> <!--Título do navegador-->
+    <link rel="stylesheet" href="./style.css">
+    <title>Login</title> <!--Título do navegador-->
 </head>
 <body>
-    <header>
-        <!--Cabeçalho-->
-    </header>
+    <header></header> <!--Cabeçalho-->
 
-    <section>
-        <div class="blocoPrincipal"> <!--Altera o bloco inteiro-->
-            <form>  
-                <label for="email" class="textoEmail">E-MAIL:</label> <!--Texto ao lado do input-->  
-                <input type="email" id="email" placeholder="Informe seu e-mail" required> <!-- Input para o e-mail-->
-                <button class="botaoPrincipal" id="botaoClick"> <!--Botão de acesso-->   
-                    <span class="fas fa-sign-in-alt"></span>  <!--Ícone de acesso-->  
-                    ACESSAR  <!--Texto-->
-                </button>
-            </form>  
-        </div> 
+    <section class="container"> <!--Bloco do login-->
+        <div class="telaLogin"> <!--Tela-->
+            <div class="textoLogin">Login</div> <!--Texto-->
+                <form class="formLogin"> <!--Formulário para receber os e-mails-->
+                    <label for="usuarioEmail">E-mail:</label>
+                    <input type="email" placeholder="Informe seu e-mail" name="emailLogin" id="usuarioEmail" required> <!--Input para digitar o e-mail-->
+                    <button type="submit" class="botaoLogin">Entrar</button> <!--Botão para o login-->
+                </form>
+        </div>
     </section>
 
-    <footer>
-        <!--Rodapé-->
+    <footer class="rodape"> <!--Rodapé--> 
+        <p>&copy; 2024 Meu Sistema. Todos os direitos reservados.</p> <!--Texto-->
     </footer>
-
-    <script src="./script.js"></script> <!--Arquivo JavaScript-->
 </body>
 </html>

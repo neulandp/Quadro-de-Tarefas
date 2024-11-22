@@ -1,118 +1,116 @@
 body {
-    display: flex; /*Layout flexível*/
-    justify-content: center; /*Centraliza horizontalmente*/
-    align-items: center; /*Centraliza verticalmente*/
-    height: 100vh; /*Ocupa 100% da altura da tela*/
+    background: linear-gradient(to right, rgb(162, 0, 49), rgb(85, 2, 129)); /*Degradê*/
+    height: 100vh; /*Faz com que o fundo cubra a tela inteira*/  
     margin: 0; /*Remove a margem*/
-    background: linear-gradient(135deg, /*Cor do fundo com gradiente arco-íris*/
-        #FF0000,
-        #FF7F00,
-        #FFFF00,
-        #00FF00,
-        #0000FF,
-        #4B0082,
-        #8B00FF
-    );
-    background-size: 400% 400%; /*Tamanho do gradiente*/
-    animation: rainbow 20s ease infinite; /*Animação do gradiente*/
+    overflow-x: hidden; /* Remove qualquer rolagem horizontal */
 }
 
-@keyframes rainbow { /*Animação para movimentar o gradiente*/
-    0% { /*Início da animação*/
-        background-position: 0% 50%;
-    }
-    50% { /*Meio da animação*/
-        background-position: 100% 50%;
-    }
-    100% { /*Fim da animação*/
-        background-position: 0% 50%;
-    }
+.container {
+    height: 100%; /*Ocupa toda a altura do corpo*/  
+    display: flex; /*Usar flexbox para alinhamento*/  
+    align-items: center; /*Alinha verticalmente ao centro*/  
+    justify-content: center; /*Alinha horizontalmente ao centro*/  
+
 }
 
-.blocoPrincipal {
-    display: flex; /*Layout flexível*/
-    flex-direction: column; /*Organiza os itens em uma coluna*/
-    margin: 10% auto; /*Centraliza o bloco na tela*/
-    justify-content: center; /*Centraliza horizontalmente*/
-    align-items: center; /*Centraliza verticalmente*/
-    width: 300px; /*Largura fixa do quadrado*/
-    height: 300px; /*Altura fixa do quadrado, igual à largura*/
-    background-color: rgba(255, 255, 255, 0.8); /*Fundo branco com transparência*/
-    border-radius: 10px; /*Bordas arredondadas*/
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /*Sombra suave*/
-    padding-top: 10px; /*Espaçamento no topo do elemento*/
-    padding-bottom: 10px; /*Espaçamento na parte inferior do elemento*/
-    padding-left: 20px; /*Espaçamento no lado esquerdo do elemento*/
-    padding-right: 20px; /*Espaçamento no lado direito do elemento*/
+.telaLogin {
+    background-color: rgba(255, 255, 255, 0.8); /*Transparência*/
+    width: 500px; /*Largura*/
+    height: 400px; /*Altura*/
+    border-radius: 8px; /*Borda arredondada*/
 }
 
-form {  
-    display: flex; /*Layout flexível*/
-    flex-direction: column; /*Coloca os elementos em coluna*/
-    align-items: center; /*Centraliza o elemento*/
+.textoLogin {
+    font-family: Arial, Helvetica, sans-serif; /*Fonte do texto*/
+    display: flex; /*Usar flexbox para alinhamento*/ 
+    align-items: center; /*Alinha verticalmente ao centro*/
+    justify-content: center; /*Alinha horizontalmente ao centro*/
+    margin-top: 50px; /*Afasta um pouco do topo*/
+    font-size: 40px; /*Tamanho da fonte do texto*/
+}
+
+.formLogin {
+    display: flex; /*Usar flexbox para o formulário*/  
+    flex-direction: column; /*Organizar os itens em coluna*/  
+    align-items: center; /*Alinha todos os itens ao centro*/  
+    gap: 10px; /*Espaçamento entre os itens*/
+    margin-top: 50px; 
+}
+
+label {  
+    font-family: Arial, Helvetica, sans-serif; /*Fonte do texto*/  
+    font-size: 20px; /*Tamanho da fonte*/  
+    color: rgb(0, 0, 0); /* Cor do texto (ajuste sutil) */  
+    margin-bottom: 8px; /*Espaço abaixo do label*/  
+    display: block; /*Faz com que o label ocupe toda a largura disponível*/  
+    font-weight: bold; /*Deixa o texto em negrito*/  
+}   
+
+input {  
+    padding: 15px; /*Ajustando um padding uniforme para todos os lados*/  
+    border: 2px solid rgb(198, 198, 198); /*Borda ao redor do elemento*/  
+    border-radius: 5px; /*Bordas arredondadas*/  
+    font-size: 16px; /*Tamanho da fonte*/  
+    font-family: Arial, Helvetica, sans-serif; /*Fonte do texto*/  
+    width: 50%; /*Faz os inputs ocuparem a largura especificada*/  
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /*Suaviza a transição para as bordas e sombra*/  
+    outline: none; /*Remove o contorno padrão*/  
 }  
 
-.textoEmail {
-    font-family: 'Arial', sans-serif; /*Fonte do texto*/
-    font-weight: bold; /*Negrito*/
-    font-size: 16px; /*Tamanho da fonte*/
-    margin-bottom: 12px; /*Aumentado para dar mais espaço entre o texto e o input*/
-    color: black; /*Cor do texto*/
-    text-align: left; /*Alinhamento à esquerda para maior clareza*/
-    letter-spacing: 0.5px; /*Pequeno aumento no espaçamento das letras*/
-    line-height: 1.5; /*Maior altura de linha*/
-    transition: color 0.3s ease; /*Transição suave para mudanças na cor*/
+input:hover {  
+    border-color: rgba(162, 0, 49, 0.8); /*Altera a cor da borda ao passar o mouse*/  
+}  
+
+input:focus {  
+    border-color: rgba(162, 0, 49, 0.8); /*Cor da borda ao focar no input*/  
+    box-shadow: 0 0 5px rgba(162, 0, 49, 0.5); /*Sombra ao focar*/  
 }
 
-input {
-    border: 2px solid grey; /*Borda de cor cinza*/
-    border-radius: 5px; /*Borda arredondada*/
-    width: 100%; /*Preenche toda a largura disponível*/
-    max-width: 300px; /*Largura máxima*/
-    padding: 12px 15px; /*Maior espaçamento interno*/
-    font-size: 16px; /*Tamanho da fonte*/
-    margin-bottom: 12px; /*Espaçamento abaixo do input*/
-    background-color: #f9f9f9; /*Cor de fundo*/
-    color: #333; /*Cor do texto*/
-    transition: all 0.3s ease; /*Transições suaves*/
+.botaoLogin {  
+    position: relative; /*Posiciona em relação à sua posição original*/
+    background-color: transparent; /*Torna o fundo inicialmente transparente*/  
+    background-image: linear-gradient(to bottom right, rgb(50, 50, 50), rgb(0, 0, 0)); /*Gradiente inicial*/  
+    color: white; /*Cor do texto*/  
+    font-family: Arial, Helvetica, sans-serif; /*Fonte do texto*/ 
+    border: none; /*Remove a borda*/
+    border-radius: 8px; /*Bordas arredondadas*/  
+    padding: 15px 25px; /*Aumenta o padding horizontal para dar mais tamanho */  
+    font-size: 18px; /*Tamanho da fonte*/  
+    cursor: pointer; /*Altera o cursor do mouse quando passa pelo elemento*/ 
+    transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.2s ease; /*Suaviza a transição para as cores e transformação*/  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*Sombra leve*/  
+}  
+
+.botaoLogin:hover {  
+    background-color: rgba(162, 0, 49, 0.8); /*Cor de fundo durante o hover*/  
+    background-image: linear-gradient(to bottom right, rgb(162, 0, 49), rgb(85, 2, 129)); /*Gradiente ao passar o mouse*/  
+    opacity: 1; /*A opacidade está 100% durante o hover*/  
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /*Aumento da sombra no hover*/  
+    transform: scale(1.05); /*Aumenta o tamanho do botão em 5% ao passar o mouse*/  
+}   
+
+.botaoLogin:active {  
+    transform: translateY(2px) scale(0.95); /*Efeito de “afundar” ao clicar e reduz o tamanho em 5%*/  
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /*Reduz a sombra ao clicar*/  
+}  
+
+.botaoLogin:focus {  
+    outline: none; /*Remove o contorno padrão*/
 }
 
-input:focus { /*Efeito de foco no campo de input*/
-    border-color: #000000; /*Cor da borda quando o campo está focado*/
-    background-color: #fff; /*Fundo branco ao focar*/
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /*Sombra suave para indicar foco*/
-    outline: none; /*Remove o contorno padrão do navegador*/
-}
-
-input:hover { /*Efeito de hover para o input*/
-    border-color: #000000; /*Muda a cor da borda ao passar o mouse*/
-    background-color: #f0f0f0; /*Muda o fundo para um tom mais claro ao passar o mouse*/
-}
-
-.botaoPrincipal {
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /*Fonte do botão*/
-    font-weight: bold; /*Negrito*/
-    background-color: #A8EBAF; /*Cor de fundo*/
-    color: black; /*Cor do texto*/
-    border: 2px solid #72bc79; /*Borda de cor mais escura para contraste*/
-    border-radius: 5px; /*Borda arredondada*/
-    padding: 12px 20px; /*Aumenta o padding para tornar o botão maior*/
-    cursor: pointer; /*Altera o cursor do mouse quando passa em cima do elemento*/
-    font-size: 16px; /*Tamanho da fonte*/
+.rodape {
+    background: linear-gradient(to right, rgb(162, 0, 49), rgb(85, 2, 129)); /*Gradiente igual ao fundo*/
+    color: white; /*Cor do texto*/
     text-align: center; /*Centraliza o texto*/
-    transition: all 0.3s ease; /*Transição suave para todos os efeitos*/
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*Sombra suave para dar a impressão de um botão elevado*/
+    padding: 15px; /*Espaçamento interno*/
+    font-size: 16px; /*Tamanho da fonte*/
+    width: 100%; /*Garante que ocupe toda a largura*/
+    position: absolute; /*Posiciona o rodapé na parte inferior da página*/
+    bottom: 0; /*Garante que o rodapé esteja na parte inferio */
 }
 
-.botaoPrincipal:hover {
-    background-color: #72bc79; /*Cor de fundo altera ao passar o mouse*/
-    border-color: #62a96a; /*Ajusta a cor da borda ao passar o mouse*/
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /*Aumenta a sombra ao passar o mouse*/
-}
-
-.botaoPrincipal:active { /*Quando o botão é pressionado*/
-    transform: scale(0.98); /*Reduz o tamanho do botão ao clicar*/
-    background-color: #A0D89B; /*Cor de fundo durante o clique*/
-    border-color: #8abf7b; /*Ajusta a cor da borda durante o clique*/
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*Reduz a sombra ao clicar*/
+.rodape p {
+    margin: 0; /*Remove margens*/
+    font-family: Arial, Helvetica, sans-serif; /*Fonte do texto*/
+    font-size: 16px; /*Tamanho de fonte*/
 }
