@@ -3,4 +3,6 @@ let acessarClick = document.getElementById("botaoUsuario"); //Seleciona o elemen
 acessarClick.addEventListener('click', (e) => { //Adiciona um evento para o botão selecionado
     e.preventDefault(); //Apenas para manter no console e a mensagem não sumir
     console.log("O click deu certo"); //Exibe no console toda vez que o botão for clicado
+    document.getElementById("usuarioEmail").value = ""; //Tira o valor toda vez que clica no botão
 })
+
