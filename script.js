@@ -1,4 +1,4 @@
-let acessarClick = document.getElementById("botaoClick"); //Seleciona o elemento do HTML e armazena em uma variável
+let acessarClick = document.getElementById("botaoUsuario"); //Seleciona o elemento do HTML e armazena em uma variável
 
 acessarClick.addEventListener('click', (e) => { //Adiciona um evento para o botão selecionado
     e.preventDefault(); //Apenas para manter no console e a mensagem não sumir
