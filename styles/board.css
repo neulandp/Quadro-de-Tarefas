@@ -24,11 +24,11 @@ nav {
     position: relative; 
 }
 
-.selecao-container {  
+.container-selecao {  
     margin-right: 20px; /*Espaçamento à direita*/ 
 }
 
-.botao-board {  
+.botao-quadro {  
     padding: 5px 10px; /*Espaçamento interno*/  
     font-size: 16px; /*Tamanho da fonte*/  
     border: none; /*Remova a borda*/  
@@ -36,7 +36,7 @@ nav {
     width: 150px; /*Largura*/ 
 }
 
-.titulo {
+.titulo-quadro {
     font-size: 32px; /*Tamanho da fonte*/
     font-weight: bold; /*Negrito*/
     letter-spacing: 2px; /*Espaçamento entre as letras*/
@@ -55,7 +55,7 @@ nav {
     color: white; /*Cor do texto*/
 }
 
-#detalhes-board {
+#detalhes-quadro {
     background-color: rgba(255, 255, 255, 0.8); /*Fundo com transparência*/
     border-radius: 8px; /*Bordas arredondadas*/
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*Sombra*/
@@ -70,12 +70,12 @@ nav {
     overflow: hidden; /*Garante que o conteúdo não vaze*/
 }
 
-#detalhes-board:hover {
+#detalhes-quadro:hover {
     transform: scale(1.05); /*Aumenta o tamanho ao passar o mouse*/
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /*Aumenta a sombra ao passar o mouse*/
 }
 
-#detalhes-board h2 {
+#detalhes-quadro h2 {
     font-size: 1.3rem; /*Tamanho da fonte*/
     color: #333; /*Cor do texto*/
     margin-bottom: 15px; /*Maior espaço abaixo do título*/
@@ -83,18 +83,18 @@ nav {
     text-align: center; /*Centraliza o título*/
 }
 
-#detalhes-board p {
+#detalhes-quadro p {
     font-size: 1rem; /*Tamanho da fonte*/
     color: #555; /*Cor do texto*/
     margin-bottom: 20px; /*Maior espaçamento entre os parágrafos*/
 }
 
-#detalhes-board p strong {
+#detalhes-quadro p strong {
     font-weight: bold; /*Negrito*/
     color: #333; /*Cor do texto*/
 }
 
-#detalhes-board .descricao-task {
+#detalhes-quadro .descricao-tarefa {
     background-color: #fff; /*Cor de fundo*/
     border: 1px solid #ddd; /*Borda ao redor do elemento*/
     border-radius: 4px; /*Borda arredondada*/
@@ -105,12 +105,12 @@ nav {
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /*Transição e animação*/
 }
 
-#detalhes-board .descricao-task:hover {
+#detalhes-quadro .descricao-tarefa:hover {
     border-color: rgba(162, 0, 49, 0.8); /*Cor da borda ao passar o mouse*/
     box-shadow: 0 0 5px rgba(162, 0, 49, 0.2); /*Sombra*/
 }
 
-#detalhes-board .botao-acao {
+#detalhes-quadro .botao-acao {
     background-color: transparent; /*Fundo transparente*/
     background-image: linear-gradient(to bottom right, rgb(50, 50, 50), rgb(0, 0, 0)); /*Gradiente de fundo*/
     color: white; /*Cor do texto*/
@@ -125,7 +125,7 @@ nav {
     margin-top: 15px; /*Espaço superior*/
 }
 
-#detalhes-board .botao-acao:hover {
+#detalhes-quadro .botao-acao:hover {
     background-color: rgba(162, 0, 49, 0.8); /*Cor de fundo ao passar o mouse*/
     background-image: linear-gradient(to bottom right, rgb(162, 0, 49), rgb(85, 2, 129)); /*Gradiente ao passar o mouse*/
     opacity: 1; /*Opacidade 100%*/
@@ -133,7 +133,7 @@ nav {
     transform: scale(1.05); /*Aumenta o tamanho do botão ao passar o mouse*/
 }
 
-#detalhes-board .botao-acao:active {
+#detalhes-quadro .botao-acao:active {
     transform: translateY(2px) scale(0.95); /*Efeito de "afundar" ao clicar*/
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /*Reduz a sombra ao clicar*/
 }
@@ -146,5 +146,5 @@ footer {
     font-size: 16px; /*Tamanho da fonte*/
     width: 100%; /*Garante que ocupe toda a largura*/
     position: absolute; /*Posiciona o rodapé na parte inferior da página*/
-    bottom: 0; /*Garante que o rodapé esteja na parte inferio*/
+    bottom: 0; /*Garante que o rodapé esteja na parte inferior*/
 }
