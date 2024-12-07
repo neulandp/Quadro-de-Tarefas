@@ -13,23 +13,27 @@ body {
     justify-content: center; /*Alinha horizontalmente ao centro*/  
 }
 
-.telaLogin {
+.login-screen {
     background-color: rgba(255, 255, 255, 0.8); /*Transparência*/
     width: 500px; /*Largura*/
     height: 400px; /*Altura*/
     border-radius: 8px; /*Borda arredondada*/
 }
 
-.textoLogin {
+.text-login {
     display: flex; /*Usar flexbox para alinhamento*/ 
     align-items: center; /*Alinha verticalmente ao centro*/
     justify-content: center; /*Alinha horizontalmente ao centro*/
     margin-top: 50px; /*Afasta um pouco do topo*/
-    font-size: 40px; /*Tamanho da fonte do texto*/
+    font-size: 30px; /*Tamanho da fonte do texto*/
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*Fonte do texto*/
+    font-weight: bold; /*Negrito*/
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /*Sombramento*/
+    color: black; /*Cor do texto*/
 }
 
 .formLogin {
-    display: flex; /*Usar flexbox para o formulário*/  
+    display: flex; /*Layout flexível*/  
     flex-direction: column; /*Organizar os itens em coluna*/  
     align-items: center; /*Alinha todos os itens ao centro*/  
     gap: 10px; /*Espaçamento entre os itens*/
@@ -38,7 +42,7 @@ body {
 
 label {  
     font-size: 20px; /*Tamanho da fonte*/  
-    color: rgb(0, 0, 0); /* Cor do texto (ajuste sutil) */  
+    color: rgb(0, 0, 0); /*Cor do texto*/  
     margin-bottom: 8px; /*Espaço abaixo do label*/  
     display: block; /*Faz com que o label ocupe toda a largura disponível*/  
     font-weight: bold; /*Deixa o texto em negrito*/  
@@ -55,50 +59,51 @@ input {
     outline: none; /*Remove o contorno padrão*/  
 }  
 
-input:hover {  
-    border-color: rgba(162, 0, 49, 0.8); /*Altera a cor da borda ao passar o mouse*/  
-}  
-
 input:focus {  
     border-color: rgba(162, 0, 49, 0.8); /*Cor da borda ao focar no input*/  
     box-shadow: 0 0 5px rgba(162, 0, 49, 0.5); /*Sombra ao focar*/  
 }
 
-.botaoLogin {
+#message-error {
+    color: red;
+    display: none;
+}
+
+.login-button {
     font-family: 'Poppins', sans-serif; /*Fonte do texto*/
     position: relative; /*Posiciona em relação à sua posição original*/
-    background-color: transparent; /*Torna o fundo inicialmente transparente*/  
+    background-color: transparent; /*Torna o fundo transparente*/  
     background-image: linear-gradient(to bottom right, rgb(50, 50, 50), rgb(0, 0, 0)); /*Gradiente inicial*/  
     color: white; /*Cor do texto*/  
     border: none; /*Remove a borda*/
     border-radius: 8px; /*Bordas arredondadas*/  
-    padding: 15px 0; /*Ajusta o padding apenas vertical para manter o tamanho adequado */
+    padding: 15px 0; /*Ajusta o padding apenas vertical*/
     font-size: 18px; /*Tamanho da fonte*/  
     cursor: pointer; /*Altera o cursor do mouse quando passa pelo elemento*/ 
     transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.2s ease; /*Suaviza a transição para as cores e transformação*/  
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*Sombra leve*/  
-    width: 25%; /* Fixa a largura em 25% do contêiner */
-    margin-top: 20px; /* Espaço entre o formulário e o botão */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*Sombra*/  
+    width: 25%; /*Largura*/
+    margin-top: 20px; /*Espaço entre o formulário e o botão*/
 }  
 
-.botaoLogin:hover {  
-    background-color: rgba(162, 0, 49, 0.8); /*Cor de fundo durante o hover*/  
+.login-button:hover {  
+    background-color: rgba(162, 0, 49, 0.8); /*Cor de fundo*/  
     background-image: linear-gradient(to bottom right, rgb(162, 0, 49), rgb(85, 2, 129)); /*Gradiente ao passar o mouse*/  
     opacity: 1; /*A opacidade está 100% durante o hover*/  
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /*Aumento da sombra no hover*/  
-    transform: scale(1.05); /*Aumenta o tamanho do botão em 5% ao passar o mouse*/  
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /*Aumento da sombra*/  
+    transform: scale(1.05); /*Aumenta o tamanho do botão ao passar o mouse*/  
 }   
 
-.botaoLogin:active {  
-    transform: translateY(2px) scale(0.95); /*Efeito de “afundar” ao clicar e reduz o tamanho em 5%*/  
+.login-button:active {  
+    transform: translateY(2px) scale(0.95); /*Efeito de “afundar” ao clicar e reduz o tamanho*/  
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /*Reduz a sombra ao clicar*/  
 }  
 
-.botaoLogin:focus {  
+.login-button:focus {  
     outline: none; /*Remove o contorno padrão*/
 }
 
-.rodape {
+footer {
     background: linear-gradient(to right, rgb(162, 0, 49), rgb(85, 2, 129)); /*Gradiente igual ao fundo*/
     color: white; /*Cor do texto*/
     text-align: center; /*Centraliza o texto*/
@@ -109,7 +114,7 @@ input:focus {
     bottom: 0; /*Garante que o rodapé esteja na parte inferio */
 }
 
-.rodape p {
+footer p {
     margin: 0; /*Remove margens*/
     font-size: 16px; /*Tamanho de fonte*/
 }
