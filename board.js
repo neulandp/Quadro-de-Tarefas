@@ -1,136 +1,136 @@
-/*Mensagem de boas-vindas*/
-document.addEventListener("DOMContentLoaded", () => {
-    const mensagem = document.getElementById("saudacao-usuario");
+const url_theme = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/"
+const url_quadros = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/ColumnByBoardId?BoardId"
+const url_board = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/Boards"
+const url_task = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/TasksByColumnId?ColumnId"
 
-    let nomeUsuario = localStorage.getItem("usuario");
-    if (nomeUsuario) {
-        try {
-            let nome = JSON.parse(nomeUsuario);
-            let primeiroNome = nome.Name.split(" ")[0];
-            mensagem.innerText = `Olá, ${primeiroNome}`;
-        } catch (erro) {
-            console.error("Erro ao acessar ou processar dados do usuário:", erro);
-        }
-    } else {
-        mensagem.innerText = "Bem-vindo, visitante";
-    }
 
-    //Chama a função para carregar os quadros
-    dropdown();
+//EXIBE O EMAIL NA NAV
+const messageHello = document.getElementById("message-bemVindo");
+var infoUsuario = localStorage.getItem("usuario")
+var user = JSON.parse(infoUsuario)
+var email = user.Email
+messageHello.innerText = `${email}`;
+
+//EVENTO QUE ATIVA MEU DARK MODE
+const buttonDark = document.getElementById("button-darkmode");
+buttonDark.addEventListener('change', () => {
+  if (buttonDark.checked) {
+    document.body.classList.add('dark-mode');
+  } else {
+    document.body.classList.remove('dark-mode');
+  }
 });
 
-const url_tema = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/";
-const url_colunas = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/ColumnByBoardId?BoardId";
-const url_quadro = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/Boards";
-const url_tarefa = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/TasksByColumnId?ColumnId";
+// DROPDOWN
+async function dropDown(){
 
-//Evento para mostrar o modo escuro
-const botaoEscuro = document.getElementById("button-darkmode");
-botaoEscuro.addEventListener('change', () => {
-    if (botaoEscuro.checked) {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
-    }
-});
-
-//DropDown
-async function dropdown() {
-    try {
-        const listaQuadros = await fetch(url_quadro);  //Fazendo a requisição para obter os quadros
+    try{
+        const listBoard = await fetch(url_board)  // Fazendo a requisição para obter os boards
        
-        if (listaQuadros.ok) {
-            const boardsDropdown = document.getElementById("boardsDropdown");
-            const quadros = await listaQuadros.json();  //Convertendo a resposta para JSON
-            criarQuadro(quadros, boardsDropdown);
-        } else {
-            console.error("Erro", listaQuadros.status); //Exibe a mensagem de erro
+        if(listBoard.ok){
+
+            const selectBoard = document.getElementById("select-board");
+            const boards = await listBoard.json()// Convertendo a resposta para JSON
+            creatBoard(boards,selectBoard);
+    }else{
+            console.error("Erro", listBoard.status); // Exibe a mensagem de erro
         }
-    } catch (erro) {
-        console.log("Erro", erro); //Exibe a mensagem de erro
+    }catch(error){
+        console.log("Erro"); // Exibe a mensagem de erro
     }
 }
 
-function criarQuadro(quadros, boardsDropdown) {
-    quadros.forEach(quadro => {
-        const opcaoQuadro = document.createElement("option");
-        opcaoQuadro.value = quadro.Id; //ID do quadro
-        opcaoQuadro.textContent = quadro.Name; //Nome do quadro
-        boardsDropdown.appendChild(opcaoQuadro);    
-    });
-    
-    boardsDropdown.addEventListener("change", async (evento) => {
-        const idQuadroSelecionado = evento.target.value; //ID do quadro selecionado
-        if (idQuadroSelecionado) {
-            await carregarQuadro(idQuadroSelecionado); //Carregar as colunas apenas para o quadro selecionado
-        }
-    });
+function creatBoard(boards,selectBoard){
+    boards.forEach(board => {
+        const optionBoard = document.createElement("option")
+        optionBoard.value = board.Id; // ID do quadro
+        optionBoard.textContent = board.Name; // Nome do quadro
+        selectBoard.appendChild(optionBoard);    
+    })
+        selectBoard.addEventListener("change", async (event) => {
+            const selectedBoardId = event.target.value; // ID do quadro selecionado
+            if(selectedBoardId){
+            await loadBoard(selectedBoardId); // Carregar as colunas apenas para o quadro selecionado
+        }        
+})
 }
+
+document.addEventListener("DOMContentLoaded", dropDown);
 
 // EVENTO COLUNAS
-async function carregarQuadro(idQuadro) {
-    try {
-        const containerColunas = document.getElementById("detalhes-board");
-        const infoColunas = await fetch(`${url_colunas}=${idQuadro}`);  //Fazendo a requisição para obter as colunas
+async function loadBoard(boardId) {
+
+    try{
+        const columnContainer = document.getElementById("column-container"); 
+        const boardTitle = document.getElementById("board-title");
+        const infoColumns = await fetch(`${url_quadros}=${boardId}`);  // Fazendo a requisição para obter as colunas
        
-        containerColunas.innerHTML = ""; //Limpa as colunas anteriores
-        if (infoColunas.ok) {
-            const colunas = await infoColunas.json();
+        columnContainer.innerHTML = ""; // Limpa as colunas anteriores
+        if (infoColumns.ok) {
+            const columns = await infoColumns.json();
             
-            criarColunas(colunas, containerColunas);
-        } else {
-            console.error("Erro ao carregar colunas:", infoColunas.status);
-        }
-    } catch (erro) {
-        console.log("Erro", erro); //Exibe a mensagem de erro
+/*Atualizar o título do quadro, se necessário - Supondo que a API retorne o nome do quadro 
+          Caso contrário, ajuste conforme a resposta da API*/
+            creatColumns(columns,columnContainer)
+       
+    } else {
+        console.error("Erro ao carregar colunas:", infoColumns.status);
+      }
+    }catch(error){
+        console.log("Erro"); // Exibe a mensagem de erro
     }
 }
 
-function criarColunas(colunas, containerColunas) {
-    colunas.forEach((coluna) => {
-        const tarefaColuna = document.createElement("div");
-        tarefaColuna.className = "column";  //Adiciona uma classe para estilização
-        tarefaColuna.Id = coluna.Id;
-        tarefaColuna.innerHTML = `
-            <div class="tasks-container" id="tasks-${coluna.Id}">
-                <h3>${coluna.Name}</h3>
+function creatColumns(columns,columnContainer){
+    columns.forEach((column) => {
+        const columnTask = document.createElement("div")
+            columnTask.className = "column" // Adiciona uma classe para estilização
+            columnTask.Id = column.Id
+            columnTask.innerHTML = `
+            <div class="tasks-container" id="tasks-${column.Id}">
+                <h3>${column.Name}</h3>
                 <!-- Tarefas desta coluna serão adicionadas aqui -->
             </div>`;
-        //Adicionando a coluna ao contêiner principal
-        containerColunas.appendChild(tarefaColuna);
-        carregarTarefaColuna(coluna.Id);
-    });
+        // Adicionando a coluna ao contêiner principal
+        columnContainer.appendChild(columnTask);
+        taskColumn(column.Id)
+
+    })
 }
 
-//Tarefas
-async function carregarTarefaColuna(idColuna) {
+//TASK 
+async function taskColumn(columnId) {
+
     try {
-        const infoTarefa = await fetch(`${url_tarefa}=${idColuna}`);
-        const divTarefa = document.getElementById(`tasks-${idColuna}`);
-        
-        if (infoTarefa.ok) {
-            const tarefasJson = await infoTarefa.json();
-            criarTarefa(tarefasJson, divTarefa);
-        } else {
-            console.error("Erro ao carregar tarefas:", infoTarefa.status);
-        }
-    } catch (erro) {
-        console.error("Erro", erro); //Exibe a mensagem de erro
-    }
+    const infoTask = await fetch(`${url_task}=${columnId}`);
+    const divTask = document.getElementById(`task-${columnId}`);
+        if(infoTask.ok){
+            console.log(infoTask);
+            const taskJson = await infoTask.json();
+            console.log(infoTask);
+            creatTask(taskJson,divTask);
+        }else {
+            console.error("Erro ao carregar colunas:", infoTask.status);
+        }      
+    } catch (error) {
+        console.error("Erro"); // Exibe a mensagem de erro
+  }
 }
 
-//Criar tarefas
-function criarTarefa(tarefasJson, divTarefa) {
-    //Limpa tarefas anteriores na coluna
-    divTarefa.innerHTML = "";
+//FUNÇÃO QUE CRIA AS TASK
+function creatTask(taskJson,divTask){
 
-    //Renderiza as tarefas recebidas
-    tarefasJson.forEach((tarefa) => {
-        const tarefaElemento = document.createElement("div");
-        tarefaElemento.className = "task";
-        tarefaElemento.innerHTML = `
-            <p><strong>${tarefa.Title}</strong></p>
-            <p>${tarefa.Description}</p>`;
-        divTarefa.appendChild(tarefaElemento);
-    });
+ // Limpa tarefas anteriores na coluna
+ divTask.innerHTML = "";
+
+ // Renderiza as tarefas recebidas
+ taskJson.forEach((task) => {
+     const taskElement = document.createElement("div");
+     taskElement.className = "task";
+     taskElement.innerHTML = `
+         <p><strong>${task.Title}</strong></p>
+         <p>${task.Description}</p>
+     `;
+     divTask.appendChild(taskElement);
+ });
 }

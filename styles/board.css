@@ -1,105 +1,147 @@
-/* Definindo uma fonte padrão para o corpo da página */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: white; /* Fundo branco */
-    color: black; /* Cor do texto */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Garantir que o conteúdo ocupe a altura total da tela */
-}
-
-/* Estilo da barra de navegação */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: linear-gradient(to right, rgb(162, 0, 49), rgb(85, 2, 129)); /* Gradiente rosa e roxo */
-    border-bottom: 2px solid white;
-    position: relative;
-}
-
-/* Container para o botão de seleção */
-.selecao-container {
-    position: relative;
-}
-
-/* Botão para selecionar o board */
-.btn {
-    background: rgba(255, 255, 255, 0.2); /* Fundo transparente com texto claro */
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body.ligt-mode{
+    margin: 0;
+    background: linear-gradient(to right, rgb(162, 0, 49), rgb(85, 2, 129)); 
+    height: 100vh;
+  }
+  
+  body.dark-mode {
+    background-color: #3d2f57;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-}
-
-/* Efeito de hover para o botão de seleção */
-.btn:hover {
-    background: rgba(255, 255, 255, 0.4);
-}
-
-/* Menu suspenso do botão */
-.dropdown-menu {
-    background-color: #6600CC;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    margin-top: 10px;
-}
-
-.dropdown-menu li {
-    padding: 10px 20px;
-}
-
-.dropdown-menu li:hover {
-    background-color: #FF0066;
-}
-
-/* Estilo para o título da navbar */
-.titulo {
-    font-size: 24px;
-    font-weight: 700;
+  }
+  
+  /* Outros ajustes para o modo escuro */
+  body.dark-mode .column {
+    background-color: #333;
     color: white;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza o título horizontalmente */
-    text-transform: uppercase; /* Transforma o título para letras maiúsculas */
-}
-
-/* Estilo para o elemento de saudação do usuário */
-#saudacao-usuario {
-    font-size: 18px;
-    font-weight: 500;
-    color: white;
-}
-
-/* Estilo para a área de detalhes do board */
-#detalhes-board {
-    flex-grow: 1; /* Faz com que a área ocupe o restante do espaço */
-    padding: 20px;
-}
-
-/* Rodapé */
-footer {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 10px 0;
-    text-align: center;
-    color: white;
-    font-size: 14px;
-    position: relative;
-    bottom: 0;
+  }
+  
+  
+  nav {
+    background: linear-gradient(to right, rgb(162, 0, 49), rgb(85, 2, 129)); 
+    padding: 10px;
+    box-shadow: 0px 4px 10px black;
     width: 100%;
-}
-
-/* Estilos adicionais para tornar a interface mais agradável */
-button, .dropdown-menu li {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px; /* Espaço entre os elementos */
+  }
+  
+  .container-title{
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre os elementos */
+  }
+  
+  
+  #select-board{
+    border-radius: 5px;
+    width: 30%;
+    height: 25px;
+    outline: none;   
+    border: 1px solid #7a7a7a; 
+  }
+  
+  #option-boards{
+    border-radius: 5px;
+    outline: none;   
+    border: 2px solid rgb(122, 122, 122); 
+  }
+  
+  
+  .divider {
+    width: 1px;
+    height: 20px;
+    background-color: #ccc; /* Cor do traço */
+  }
+  
+  .columns {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .column {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+    width: 200px;
+  }
+  
+  .column h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+  }
+  
+  #column-container{
+    margin: 50px 50px;
+  }
+  
+  .tasks-container {
+  
+    min-height: 100px;
+    background: #fff;
+    border: 1px dashed #ccc;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  
+  /* Estilo do botão switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+    margin-left: 40px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider-darkmode {
+    position: absolute;
     cursor: pointer;
-}
-
-button:focus, .dropdown-menu li:focus {
-    outline: none;
-}
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+  }
+  
+  .slider-darkmode:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider-darkmode {
+    background-color: #4CAF50; /* Cor verde quando ativado */
+  }
+  
+  input:checked + .slider-darkmode:before {
+    transform: translateX(14px);
+  }
+  
+  footer{
+    background: linear-gradient(to right, rgb(162, 0, 49), rgb(85, 2, 129));    
+  }

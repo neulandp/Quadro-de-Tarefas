@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="png" href="./LogoTipoSystem.png"> <!--Ícone do navegador-->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <!--Arquivo de fonte de texto-->
-    <link rel="stylesheet" href="./styles/board.css"> <!--Arquivo CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"> 
-    <title>Quadro de tarefas</title> <!--Título do navegador-->
-</head>
-<body>
-    <nav> <!--Navbar-->
-        <div class="selecao-container"> <!--Container para a seleção-->
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="boardsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                Selecionar Board
-            </button> <!--Botão para clicar e realizar a seleção-->
-            <ul class="dropdown-menu dropdown-scroll" id="boardsLista" aria-labelledby="boardsDropdown"></ul>
-        </div>
-        <div class="titulo">Quadro de Tarefas</div> <!--Título da nav-->
-        <div id="saudacao-usuario"></div> <!--Mensagem do lado direito para o usuário que entrar no sistema-->
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/board.css" />
+    <title>TaskBoard</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="container-title">
+        <h2 class="title-nav">TaskBoard</h2>
+        <div class="divider"></div>
+        <div id="message-bemVindo"></div>
+      </div>
+
+      <select id="select-board">
+        <option class="option-board">Select Board</option>
+      </select>
+
+      <label class="switch">
+        <input type="checkbox" id="button-darkmode">
+        <span class="slider-darkmode"></span>
+        <p>DarkMode</p>
+      </label>
     </nav>
-    <div id="detalhes-board">
+
+    <h2 id="board-title"></h2>
+
+    <div id="column-container" class="columns">
+      <!-- As colunas serão inseridas aqui dinamicamente -->
+      <div id="task-columns"></div>
     </div>
 
-    <footer> <!--Rodapé-->
-    </footer>
-</body>
-<script src="./board.js"></script>
+  </body>
+
+  <script src="./board.js"></script>
+
 </html>
