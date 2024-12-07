@@ -1,17 +1,75 @@
-document.addEventListener("DOMContentLoaded", () => { //Função será executado quando a página HTML carregar totalmente
-    const mensagem = document.getElementById("saudacao-usuario"); //Armazena o ID do elemento HTML em uma variável
+document.addEventListener("DOMContentLoaded", () => {
+    const mensagem = document.getElementById("saudacao-usuario");
 
-    let nomeUsuario = localStorage.getItem("usuario"); //Recupera o item "usuario" armazenado no localStorage
-    if(nomeUsuario){ //Verifica se o item "usuario" foi encontrado no localStorage, se for verdadeiro, executa o bloco de código abaixo
-        try{ 
-            let nome = JSON.parse(nomeUsuario); //Converte a string JSON de volta para objeto
-            let primeiroNome = nome.Name.split(" ")[0]; //Pega o primeiro nome, divide a string "Name" no espaço e pega a primeira palavra
-            mensagem.innerText = `Olá, ${primeiroNome}`; //Exibe uma mensagem personalizada com o nome do usuário que logar
-        }catch(error){ //Se ocorrer algum erro ao tentar processar dados, executa o bloco de código abaixo
-            console.error("Erro ao acessar ou processar dados do usuário:", error); //Exibe essa mensagem
+    let nomeUsuario = localStorage.getItem("usuario");
+    if (nomeUsuario) {
+        try {
+            let nome = JSON.parse(nomeUsuario);
+            let primeiroNome = nome.Name.split(" ")[0];
+            mensagem.innerText = `Olá, ${primeiroNome}`;
+        } catch (error) {
+            console.error("Erro ao acessar ou processar dados do usuário:", error);
         }
-    }else{ //Se não for verdadeiro, executa o bloco de código abaixo
-        mensagem.innerText = "Bem-vindo, visitante"; //Se não houver nenhum dado do usuário no localStorage, exibe a mensagem
+    } else {
+        mensagem.innerText = "Bem-vindo, visitante";
     }
+
+    //Chama a função para carregar as boards
+    selecionarBoard();
 });
 
+const url_api = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/Boards";
+
+async function selecionarBoard() {
+    try {
+        const listaBoards = await fetch(url_api);
+
+        if (listaBoards.ok) {
+            const listaSelecaoBoards = document.getElementById("boardsLista");
+            const boardsList = await listaBoards.json();  // Corrigido aqui
+
+            boardsList.forEach(board => {
+                const opcao = document.createElement("li");
+                opcao.value = board.Id;
+                opcao.textContent = board.Name;
+                opcao.className = "dropdown-item"; // Retirei o id duplicado
+                opcao.addEventListener("click", (event) => {
+                    loadBoard(board.Id);
+                });
+                listaSelecaoBoards.appendChild(opcao);
+            });
+        } else {
+            console.error("Falha ao obter as boards: ", listaBoards.statusText);
+        }
+    } catch (error) {
+        console.error("Erro ao fazer a requisição:", error);
+    }
+}
+
+const url_quadros = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/ColumnByBoardId?BoardId";
+
+async function loadBoard(boardId) {
+    try {
+        const selectElement = document.getElementById("select-board");
+        const boardTitle = document.getElementById("board-title");
+
+        const infoColumns = await fetch(`${url_quadros}&BoardId=${boardId}`); // Corrigido a URL aqui
+
+        if (infoColumns.ok) {
+            const column = await infoColumns.json();
+            boardTitle.innerHTML = column.BoardId;
+        } else {
+            console.error("Erro", infoColumns.status);
+        }
+    } catch (error) {
+        console.error("Erro", error.message);
+    }
+}
+
+document.getElementById("boardsDropdown").addEventListener("click", async (event) => {
+    const coluna = document.getElementsByClassName("column-item");
+
+    for (let colum of coluna) {
+        console.log(colum);
+    }
+});
