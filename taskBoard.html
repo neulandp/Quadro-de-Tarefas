@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/board.css" />
-    <title>TaskBoard</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./styles/board.css"/> <!--Arquivo CSS-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <!--Arquivo de fonte de texto-->
+    <title>Quadro de Tarefas</title> <!--Título do navegador-->
   </head>
-
   <body>
+    <!--Navbar-->
     <nav>
-      <div class="container-title">
-        <h2 class="title-nav">TaskBoard</h2>
-        <div class="divider"></div>
-        <div id="message-bemVindo"></div>
+      <div class="titulo-container"> <!--Container para o bloco do título da nav-->
+        <h2 class="titulo-nav">Quadro de Tarefas</h2> <!--Título central da nav-->
       </div>
 
-      <select id="select-board">
-        <option class="option-board">Select Board</option>
+      <!--Dropdown para selecionar a board (quadro de tarefa)-->
+      <select class="selecao-quadro" id="selecao-quadro-tarefa">
+        <option class="opcao-quadro" disabled selected>Selecionar Quadro</option> <!--Texto que aparece na opção de seleção do botão-->
       </select>
 
-      <label class="switch">
-        <input type="checkbox" id="button-darkmode">
-        <span class="slider-darkmode"></span>
-        <p>DarkMode</p>
+      <!--Alternância para o modo escuro -->
+      <label class="botao-alternar"> 
+        <input type="checkbox" id="botao-modo-escuro"> <!--Caixa de seleção (checkbox) para ativar ou desativar o modo escuro-->
+        <span class="slider-modo-escuro"></span> <!--Elemento visual do interruptor/alternância-->
+        <p>Dark Mode</p> <!--Texto que indica o nome da funcionalidade-->
       </label>
     </nav>
 
+    <!-- Board Title -->
     <h2 id="board-title"></h2>
 
+    <!-- Task Columns Container -->
     <div id="column-container" class="columns">
-      <!-- As colunas serão inseridas aqui dinamicamente -->
+      <!-- Task columns will be inserted here dynamically -->
       <div id="task-columns"></div>
     </div>
 
+    <!-- Script -->
+    <script src="./board.js"></script>
   </body>
-
-  <script src="./board.js"></script>
-
 </html>

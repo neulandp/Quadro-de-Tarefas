@@ -3,16 +3,8 @@ const url_quadros = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/
 const url_board = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/Boards"
 const url_task = "https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/TasksByColumnId?ColumnId"
 
-
-//EXIBE O EMAIL NA NAV
-const messageHello = document.getElementById("message-bemVindo");
-var infoUsuario = localStorage.getItem("usuario")
-var user = JSON.parse(infoUsuario)
-var email = user.Email
-messageHello.innerText = `${email}`;
-
 //EVENTO QUE ATIVA MEU DARK MODE
-const buttonDark = document.getElementById("button-darkmode");
+const buttonDark = document.getElementById("botao-modo-escuro");
 buttonDark.addEventListener('change', () => {
   if (buttonDark.checked) {
     document.body.classList.add('dark-mode');
@@ -29,7 +21,7 @@ async function dropDown(){
        
         if(listBoard.ok){
 
-            const selectBoard = document.getElementById("select-board");
+            const selectBoard = document.getElementById("selecao-quadro-tarefa");
             const boards = await listBoard.json()// Convertendo a resposta para JSON
             creatBoard(boards,selectBoard);
     }else{
