@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -11,33 +11,31 @@
   <body>
     <!--Navbar-->
     <nav>
-      <div class="titulo-container"> <!--Container para o bloco do título da nav-->
+      <div class="container-titulo"> <!--Container para o bloco do título da nav-->
         <h2 class="titulo-nav">Quadro de Tarefas</h2> <!--Título central da nav-->
       </div>
 
-      <!--Dropdown para selecionar a board (quadro de tarefa)-->
+      <!--Dropdown para selecionar o quadro-->
       <select class="selecao-quadro" id="selecao-quadro-tarefa">
         <option class="opcao-quadro" disabled selected>Selecionar Quadro</option> <!--Texto que aparece na opção de seleção do botão-->
       </select>
 
-      <!--Alternância para o modo escuro -->
-      <label class="botao-alternar"> 
+      <!--Alternância para o modo escuro-->
+      <label class="alternar-modo">
         <input type="checkbox" id="botao-modo-escuro"> <!--Caixa de seleção (checkbox) para ativar ou desativar o modo escuro-->
         <span class="slider-modo-escuro"></span> <!--Elemento visual do interruptor/alternância-->
-        <p>Dark Mode</p> <!--Texto que indica o nome da funcionalidade-->
+        <p>Modo Escuro</p> <!--Texto que indica o nome da funcionalidade-->
       </label>
     </nav>
 
-    <!-- Board Title -->
-    <h2 id="board-title"></h2>
+    <h2 id="titulo-quadro"></h2> <!--Título do quadro-->
 
-    <!-- Task Columns Container -->
-    <div id="column-container" class="columns">
-      <!-- Task columns will be inserted here dynamically -->
-      <div id="task-columns"></div>
+    <!--Container de colunas de tarefas-->
+    <div class="colunas" id="container-colunas">
+      <!-- As colunas de tarefas serão inseridas aqui dinamicamente -->
+      <div id="colunas-tarefa"></div>
     </div>
 
-    <!-- Script -->
-    <script src="./board.js"></script>
+    <script src="./board.js"></script> <!--Arquivo JavaScript-->
   </body>
 </html>
