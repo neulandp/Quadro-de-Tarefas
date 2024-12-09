@@ -29,13 +29,16 @@
     </nav>
 
     <h2 id="titulo-quadro"></h2> <!--Título do quadro-->
-
+    <div " id="loading">
+          <h1>Loading... please wait</h1>
+       </div>
     <!--Container de colunas de tarefas-->
-    <div class="colunas" id="container-colunas">
+    <div class="colunas" id="container-colunas" class="hide">
       <!-- As colunas de tarefas serão inseridas aqui dinamicamente -->
-      <div id="colunas-tarefa"></div>
+       
+      <div id="colunas-tarefa" ></div>
     </div>
 
-    <script src="./board.js"></script> <!--Arquivo JavaScript-->
+    <script src="./board.js" type="module"></script> <!--Arquivo JavaScript-->
   </body>
 </html>
